@@ -1,0 +1,9 @@
+{
+  "name": "[#8855ff]Sonnicore",
+  "author": " [#8738ff]Sonnicon[]",
+  "description": "[#bb99ff]Library mod used for some of my mods.\n\n█████ Main Features █████\n█ RecipeBrowser Remastered\n█ Modded Category Support\n█ Block replacement Support\n████████████████████",
+  "version": "0.1",
+  "main": "sonnicon.sonnicore.Sonnicore",
+  "dependencies": [],
+  "hidden": false
+}

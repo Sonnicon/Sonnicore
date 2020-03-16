@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'sonnicon.sonnicore'
+version = "0.1"
+
+sourceSets.main.java.srcDirs = ["src/"]
+sourceSets.main.resources.srcDirs = ["assets/"]
+
+repositories {
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    compile 'com.github.Anuken:Mindustry:byte-logic-SNAPSHOT'
+    compile 'com.github.Anuken:arc:d969b56'
+}
+
