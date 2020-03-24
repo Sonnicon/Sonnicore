@@ -9,12 +9,14 @@ public class ModCategory{
 
     private static HashMap<String, ModCategory> categories = new HashMap<>();
     public static ArrayList<ModCategory> categoriesOrdered = new ArrayList<>();
+    private static boolean inited = false;
 
     public ModCategory(String name){
         this(name, "icon-" + name + "-smaller");
     }
 
     public ModCategory(String name, String icon){
+        init();
         this.name = name;
         this.icon = icon;
         categories.put(name, this);
@@ -22,6 +24,10 @@ public class ModCategory{
     }
 
     public static void init(){
+        //ensures that original categories are added first
+        if(inited) return;
+        inited = true;
+
         for(io.anuke.mindustry.type.Category cat : io.anuke.mindustry.type.Category.values()) new ModCategory(cat.name());
     }
 
