@@ -121,7 +121,7 @@ public class ModPlacementFragment extends PlacementFragment{
 
             if(tryRecipe != null && tryRecipe.isVisible() && unlocked(tryRecipe)){
                 input.block = tryRecipe;
-                currentCategory = ModCategory.get(input.block.category.name());
+                currentCategory = input.block.category == null ? BlockUtils.getByBlock(input.block) : ModCategory.get(input.block.category.name());
                 return true;
             }
         }
