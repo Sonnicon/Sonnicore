@@ -26,6 +26,6 @@ public class Sonnicore extends Mod{
     @Override
     public void init(){
         ModCategory.init();
-        ModPlacementFragment.init();
+        if(!Vars.headless) ModPlacementFragment.init();
     }
 }
