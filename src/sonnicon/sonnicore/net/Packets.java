@@ -43,7 +43,7 @@ public class Packets{
             if(!Vars.headless){
                 final Cons oldListener = (Cons) listeners.get(c);
                 listeners.put(c, (Cons) packet -> {
-                    oldListener.get(packet);
+                    if(vanillaReadPacket(packet)) oldListener.get(packet);
                     for(Object listener : modListeners.get(c)){
                         ((Cons) listener).get(packet);
                     }
@@ -51,7 +51,7 @@ public class Packets{
             }else{
                 final Cons2 oldListener = (Cons2) listeners.get(c);
                 listeners.put(c, (Cons2)(netcon, packet) -> {
-                    if(!(packet instanceof InvokePacket) || ((InvokePacket)packet).type < 64) oldListener.get(netcon, packet);
+                    if(vanillaReadPacket(packet)) oldListener.get(netcon, packet);
                     if(modListeners.containsKey(c)){
                         for(Object listener : modListeners.get(c)){
                             ((Cons2) listener).get(netcon, packet);
@@ -62,6 +62,10 @@ public class Packets{
             modListeners.put(c, new Array<>());
         }else return false;
         return true;
+    }
+
+    static boolean vanillaReadPacket(Object packet){
+        return !(packet instanceof InvokePacket) || ((InvokePacket)packet).type < 64;
     }
 
     //For parameter types
